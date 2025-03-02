@@ -11,5 +11,5 @@ provider "newrelic" {
   account_id = var.newrelic_account
   api_key    = var.newrelic_ingest
   
-  region     = "US"
+  region     = "EU"
 }
