@@ -1,10 +1,4 @@
-variable "newrelic_ingest" {
-  description = "New Relic Ingest Key"
-  type        = string
-  sensitive   = true
-}
+variable "newrelic_ingest" {}
 
-variable "newrelic_account" {
-  description = "New Relic Account ID"
-  type        = number
-}
+variable "newrelic_account" {}
+  
