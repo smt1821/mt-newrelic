@@ -11,4 +11,4 @@ resource "newrelic_alert_policy" "windows-policy" {
 
 
 }
-
+##Triggering actions
