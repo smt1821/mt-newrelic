@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
-      NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+      TF_VAR_newrelic_account: ${{ secrets.NEWRELIC_ACCOUNT }}
+      TF_VAR_newrelic_ingest: ${{ secrets.NEWRELIC_INGEST }}
 
     steps:
       - name: Checkout code
@@ -40,5 +40,3 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
-        env:
-          NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
