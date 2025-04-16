@@ -22,7 +22,8 @@ jobs:
 
     env:
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-
+      TF_VAR_newrelic_account: ${{ secrets.NEWRELIC_ACCOUNT }}
+      TF_VAR_newrelic_ingest: ${{ secrets.NEWRELIC_INGEST }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
