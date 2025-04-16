@@ -7,21 +7,21 @@ on:
     paths:
       - '**.tf'
       - '.github/workflows/terraform.yml'
+
   pull_request:
     branches:
       - main
     paths:
       - '**.tf'
       - '.github/workflows/terraform.yml'
+
 jobs:
   terraform:
-    name: Apply Terraform to New Relic
+    name: Terraform Plan or Apply
     runs-on: ubuntu-latest
 
     env:
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-      #TF_VAR_newrelic_account: ${{ secrets.NEWRELIC_ACCOUNT }}
-      #TF_VAR_newrelic_ingest: ${{ secrets.NEWRELIC_INGEST }}
 
     steps:
       - name: Checkout code
@@ -41,8 +41,11 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      #- name: Terraform Plan
-      #  run: terraform plan -out=tfplan
+      - name: Terraform Plan
+        if: github.event_name == 'pull_request'
+        run: terraform plan
 
       - name: Terraform Apply
-        run: terraform apply #-auto-approve tfplan
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve
+
