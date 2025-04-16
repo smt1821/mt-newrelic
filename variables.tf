@@ -1,8 +1,10 @@
 variable "newrelic_ingest" {
-  default = "dummy"
+  type        = string
+  description = "New Relic API key"
+  sensitive   = true
 }
 
 variable "newrelic_account" {
-  default = "0000000"
+  type        = number
+  description = "New Relic Account ID"
 }
-  
